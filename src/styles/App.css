@@ -3,7 +3,7 @@
     padding: 150px 25px 0;
 }
 
-.meme-form form {
+.meme-form .form {
     display: flex;
     flex-direction: column;
     align-items: center;

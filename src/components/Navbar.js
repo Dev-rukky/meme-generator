@@ -1,7 +1,7 @@
 import logo from "../images/Troll Face.svg"
 import "../styles/Navbar.css"
 
-function Navbar() {
+const Navbar = () => {
     return (
         <nav className="">
             <div className="logo-con">

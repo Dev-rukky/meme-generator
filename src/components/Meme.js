@@ -4,15 +4,18 @@ const Meme = () => {
     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
-        randomImage: "http://i.imgflip.com/1bij.jpg" 
+        randomImage: "http://i.imgflip.com/1bij.jpg"
     });
 
     const [allMemeImages, setAllMemeImages] = useState([]);
 
     useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes")
-        .then(response => response.json())
-            .then(data => setAllMemeImages(data.data.memes) )
+        async function getMemes() {
+            const res = await fetch("https://api.imgflip.com/get_memes")
+            const data = await res.json()
+            setAllMemeImages(data.data.memes)
+        }
+        getMemes()
     }, [])
 
     const getRandomMemeImage = () => {
@@ -26,7 +29,7 @@ const Meme = () => {
     };
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         setMeme(prevMeme => ({
             ...prevMeme,
             [name]: value
@@ -37,9 +40,9 @@ const Meme = () => {
         <div className="meme-form">
             <div className="form">
                 <div className="input-field-con">
-                    <input 
+                    <input
                         type="text"
-                        placeholder="Enter something" 
+                        placeholder="Enter something"
                         name="topText"
                         value={meme.topText}
                         onChange={handleChange}

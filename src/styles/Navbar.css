@@ -8,6 +8,7 @@ nav {
     color: #FFF;
     height: 65px;
     padding: 0 25px;
+    z-index: 9999;
 
 }
 
